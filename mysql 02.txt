@@ -1,0 +1,73 @@
+CREATE DATABASE examen;
+
+CREATE TABLE clientes (
+  nombre_cliente       varchar(30) DEFAULT NULL,
+  id_cliente           int NOT NULL,
+  `apellido _cliente`  varchar(30) DEFAULT NULL,
+  fecha_cliente        date DEFAULT NULL,
+  peso_cliente         float DEFAULT NULL,
+  altura_cliente       float DEFAULT NULL,
+  domicilio_cliente    varchar(30) DEFAULT NULL,
+  codigo_postal        int DEFAULT NULL,
+  movil01_cliente      int(15) DEFAULT NULL,
+  movil02_cliente      int(15) DEFAULT NULL,
+  email_cliente        varchar(30) DEFAULT NULL,
+  /* Keys */
+  PRIMARY KEY (id_cliente)
+) ENGINE = InnoDB;
+
+INSERT INTO clientes (nombre_cliente, id_cliente, `apellido _cliente`, fecha_cliente, peso_cliente, altura_cliente, domicilio_cliente, codigo_postal, movil01_cliente, movil02_cliente, email_cliente) VALUES
+  ('jorge', 2, 'solis', '1945-01-01', 78.2, 1.8, 'almafuerte 321', 7600, 229161459, 229161459, 'j@hotmail.com'),
+  ('javier', 3, 'fernandez', '1975-09-02', 90, 1.77, 'av. paso 100', 7600, 223544444, 223544444, 'javier@gmail.com'),
+  ('jorge', 23, 'solisa', '1982-01-01', 100, 1.8, 'av. colon 4444', 7600, 223516666, 223516667, 'sol@gmail.com'),
+  ('juan', 35, 'mercado', '1964-02-02', 89.6, 1.77, 'av. independiente 720', 7600, 223616674, 223616674, 'mercado@gmail.com');
+
+SELECT 
+  `clientes`.`nombre_cliente`,
+  `clientes`.`id_cliente`,
+  `clientes`.`apellido _cliente`,
+  `clientes`.`fecha_cliente`,
+  `clientes`.`peso_cliente`,
+  `clientes`.`altura_cliente`,
+  `clientes`.`domicilio_cliente`,
+  `clientes`.`codigo_postal`,
+  `clientes`.`movil01_cliente`,
+  `clientes`.`movil02_cliente`,
+  `clientes`.`email_cliente`
+FROM
+  `clientes`
+WHERE
+  `clientes`.`peso_cliente` >= 90
+  and
+  `clientes`.`altura_cliente` >= 1.78
+  
+  SELECT 
+  `clientes`.`nombre_cliente`,
+  `clientes`.`id_cliente`,
+  `clientes`.`apellido _cliente`,
+  `clientes`.`fecha_cliente`,
+  `clientes`.`peso_cliente`,
+  `clientes`.`altura_cliente`,
+  `clientes`.`domicilio_cliente`,
+  `clientes`.`codigo_postal`,
+  `clientes`.`movil01_cliente`,
+  `clientes`.`movil02_cliente`,
+  `clientes`.`email_cliente`
+FROM
+  `clientes`
+WHERE
+  `clientes`.`codigo_postal` != 7600
+  and
+  `clientes`.`email_cliente` LIKE '%gmail%'
+  
+  SELECT AVG(`clientes`.`altura_cliente`) AS promedio FROM `clientes`;
+  
+  SELECT MAX(`clientes`.`peso_cliente`) AS LargestPrice FROM `clientes`;
+  
+  SELECT MIN(`clientes`.`fecha_cliente`) AS SmallestPrice FROM `clientes`;
+  
+  INSERT INTO clientes (nombre_cliente, id_cliente, `apellido _cliente`, fecha_cliente, peso_cliente, altura_cliente, domicilio_cliente, codigo_postal, movil01_cliente, movil02_cliente, email_cliente) VALUES
+  ('jorge', 2, 'solis', '1945-01-01', 78.2, 1.8, 'almafuerte 321', 7600, 229161459, 229161459, 'j@hotmail.com'),
+  ('javier', 3, 'fernandez', '1975-09-02', 90, 1.8, 'av. paso 100', 7600, 223544444, 223544444, 'javier@gmail.com'),
+  ('jorge', 23, 'solisa', '1982-01-01', 100, 1.8, 'av. colon 4444', 7600, 223516666, 223516667, 'sol@gmail.com'),
+  ('juan', 35, 'mercado', '1972-04-04', 89.6, 1.77, 'av. independiente 720', 7600, 223616674, 223616674, 'mercado@gmail.com');
